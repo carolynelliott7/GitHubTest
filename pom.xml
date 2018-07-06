@@ -108,7 +108,6 @@
 <plugin>
 	<groupId>org.apache.maven.plugins</groupId>
 	<artifactId>maven-surefire-plugin</artifactId>
-	<version>2.15</version>
 	<configuration>
 		<!-- Sets the VM argument line used when unit tests are run. -->
 		<argLine>${surefireArgLine}</argLine>
@@ -124,7 +123,6 @@
 <plugin>
 	<groupId>org.apache.maven.plugins</groupId>
 	<artifactId>maven-failsafe-plugin</artifactId>
-	<version>2.15</version>
 	<executions>
 		<!-- Ensures that both integration-test and verify goals of the Failsafe 
 			Maven plugin are executed. -->
@@ -145,7 +143,7 @@
 	</executions>
 </plugin>
 			
-            <plugin>
+          <!--    <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
@@ -166,7 +164,7 @@
 	        	<configuration>
 		          <runOrder>random</runOrder>
 		        </configuration>
-	        </plugin>
+	        </plugin> -->
         </plugins>
     </build>
 
