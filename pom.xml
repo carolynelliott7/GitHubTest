@@ -20,10 +20,9 @@
             <version>${sonar-jacoco-listeners.version}</version>
             <scope>test</scope>
         </dependency>
-	<dependency>
+		<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            
         </dependency>
         <!-- tag::actuator[] -->
         <dependency>
@@ -42,55 +41,47 @@
 
     <properties>
         <java.version>1.8</java.version>
-       
-       <!-- Editing out old stuff  <jacoco-maven-plugin.version>0.7.4.201502262128</jacoco-maven-plugin.version>
-        <argLine>-Xmx128m</argLine>-->
-        <!--  The next two lines are an attempt to debug
-            <scope>test</scope>
-      		<optional>true</optional>-->
-      		
-      		
       	<!--  This format is used by SonarQube. If you need another format see "buildnumber-maven-plugin" -->
-<maven.build.timestamp.format>MM.yyyy</maven.build.timestamp.format>
-<yearMonth>${maven.build.timestamp}</yearMonth>    
-<!-- ************************-->
-<!-- Sonar/Reporting settings -->
-<!-- ************************-->
-<!-- Sonar/Jacoco integration. Note that these properties need to be defined outside the "coverage" profile
-because we want to be to able to execute mvn sonar:sonar without passing a profile -->
-<!-- Tells Sonar to use jacoco for coverage results -->
-<sonar.projectKey>MyProjectKey</sonar.projectKey>
-<sonar.projectName>My Project</sonar.projectName>
- <sonar.projectVersion>${yearMonth}</sonar.projectVersion>
-<sonar.language>java</sonar.language>
-<sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
-<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-<!-- Jacoco version to use -->
-<jacoco.version>0.7.2.201409121644</jacoco.version>
-<!-- The Sonar Jacoco Listener for JUnit to extract coverage details per test -->
-<sonar-jacoco-listeners.version>1.4</sonar-jacoco-listeners.version>
-<!-- Don't let Sonar execute tests. We will ask it to Maven 'sonar.dynamicAnalysis' is deprecated since version 4.3 and should no longer be used. -->
-<!-- <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis> -->
-<!-- The system property jacoco.outputDir needs to be override on the command line
-    with an absolute path if you want to merge results from all modules.
-    Example in a Jenkisn build where ${WORKSPACE} is defined and your project in the root directory of the workspace :
-    mvn clean install -Prun-its,coverage -Djacoco.outputDir=${WORKSPACE}/target
-    Note that unfortunately using the following does not work because of
-    http://jira.codehaus.org/browse/SONAR-3427:
-<jacoco.outputDir>${session.executionRootDirectory}/target/</jacoco.outputDir>
--->
-<jacoco.outputDir>${project.build.directory}</jacoco.outputDir>
-<!-- Jacoco output file for UTs -->
-<jacoco.out.ut.file>jacoco-ut.exec</jacoco.out.ut.file>
-<!-- Tells Sonar where the Jacoco coverage result file is located for Unit Tests -->
-<sonar.jacoco.reportPath>${jacoco.outputDir}/${jacoco.out.ut.file}</sonar.jacoco.reportPath>
-<!-- Jacoco output file for ITs -->
-<jacoco.out.it.file>jacoco-it.exec</jacoco.out.it.file>
-<!-- Tells Sonar where the Jacoco coverage result file is located for Integration Tests -->
-<sonar.jacoco.itReportPath>${jacoco.outputDir}/${jacoco.out.it.file}</sonar.jacoco.itReportPath>
-<!-- <sonar.junit.reportsPath>${project.build.directory}/surefire-reports/</sonar.junit.reportsPath> -->
-<!-- <sonar.tests>src/test/java</sonar.tests> -->
-<!-- === END of Sonar/Reporting settings === -->
+		<maven.build.timestamp.format>MM.yyyy</maven.build.timestamp.format>
+		<yearMonth>${maven.build.timestamp}</yearMonth>    
+		<!-- ************************-->
+		<!-- Sonar/Reporting settings -->
+		<!-- ************************-->
+		<!-- Sonar/Jacoco integration. Note that these properties need to be defined outside the "coverage" profile
+		because we want to be to able to execute mvn sonar:sonar without passing a profile -->
+		<!-- Tells Sonar to use jacoco for coverage results -->
+		<sonar.projectKey>MyProjectKey</sonar.projectKey>
+		<sonar.projectName>My Project</sonar.projectName>
+		 <sonar.projectVersion>${yearMonth}</sonar.projectVersion>
+		<sonar.language>java</sonar.language>
+		<sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
+		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+		<!-- Jacoco version to use -->
+		<jacoco.version>0.7.2.201409121644</jacoco.version>
+		<!-- The Sonar Jacoco Listener for JUnit to extract coverage details per test -->
+		<sonar-jacoco-listeners.version>1.4</sonar-jacoco-listeners.version>
+		<!-- Don't let Sonar execute tests. We will ask it to Maven 'sonar.dynamicAnalysis' is deprecated since version 4.3 and should no longer be used. -->
+		<!-- <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis> -->
+		<!-- The system property jacoco.outputDir needs to be override on the command line
+		    with an absolute path if you want to merge results from all modules.
+		    Example in a Jenkisn build where ${WORKSPACE} is defined and your project in the root directory of the workspace :
+		    mvn clean install -Prun-its,coverage -Djacoco.outputDir=${WORKSPACE}/target
+		    Note that unfortunately using the following does not work because of
+		    http://jira.codehaus.org/browse/SONAR-3427:
+		<jacoco.outputDir>${session.executionRootDirectory}/target/</jacoco.outputDir>
+		-->
+		<jacoco.outputDir>${project.build.directory}</jacoco.outputDir>
+		<!-- Jacoco output file for UTs -->
+		<jacoco.out.ut.file>jacoco-ut.exec</jacoco.out.ut.file>
+		<!-- Tells Sonar where the Jacoco coverage result file is located for Unit Tests -->
+		<sonar.jacoco.reportPath>${jacoco.outputDir}/${jacoco.out.ut.file}</sonar.jacoco.reportPath>
+		<!-- Jacoco output file for ITs -->
+		<jacoco.out.it.file>jacoco-it.exec</jacoco.out.it.file>
+		<!-- Tells Sonar where the Jacoco coverage result file is located for Integration Tests -->
+		<sonar.jacoco.itReportPath>${jacoco.outputDir}/${jacoco.out.it.file}</sonar.jacoco.itReportPath>
+		<!-- <sonar.junit.reportsPath>${project.build.directory}/surefire-reports/</sonar.junit.reportsPath> -->
+		<!-- <sonar.tests>src/test/java</sonar.tests> -->
+		<!-- === END of Sonar/Reporting settings === -->
     </properties>
    
     <build>
@@ -126,8 +117,7 @@ because we want to be to able to execute mvn sonar:sonar without passing a profi
                     </properties>
                     <!-- Let's put failsafe reports with surefire to have access to tests 
                         failures/success reports in sonar -->
-                    <reportsDirectory>${project.build.directory}/surefire-reports
-                    </reportsDirectory>
+                    <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
                 </configuration>
             </plugin>
             <plugin>
@@ -163,18 +153,10 @@ because we want to be to able to execute mvn sonar:sonar without passing a profi
                             <append>true</append>
                         </configuration>
                     </execution>
-	                <!-- new 5 lines, please delete if it doesnt work -->
-	                <execution>
-	            		<id>report</id>
-		            	<phase>site</phase>
-		            	<goals><goal>report</goal></goals>
-		        	</execution>
                 </executions>
             </plugin>
 
-    
 <!-- Integraton tests -->
-      
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
