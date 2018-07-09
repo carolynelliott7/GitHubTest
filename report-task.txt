@@ -1,0 +1,5 @@
+projectKey=CarolynTestUpdate
+serverUrl=http://10.0.1.153:9000serverVersion=6.7.4.38452
+dashboardUrl=http://10.0.1.153:9000/dashboard/index/CarolynTestUpdate
+ceTaskId=AWR_gonfqVxUq7xxeD0m
+ceTaskUrl=http://10.0.1.153:9000/api/ce/task?id=AWR_gonfqVxUq7xxeD0m
