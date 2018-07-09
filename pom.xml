@@ -163,6 +163,12 @@ because we want to be to able to execute mvn sonar:sonar without passing a profi
                             <append>true</append>
                         </configuration>
                     </execution>
+	                <!-- new 5 lines, please delete if it doesnt work -->
+	                <execution>
+	            		<id>report</id>
+		            	<phase>site</phase>
+		            	<goals><goal>report</goal></goals>
+		        	</execution>
                 </executions>
             </plugin>
 
