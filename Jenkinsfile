@@ -31,5 +31,6 @@ pipeline {
                 echo "deploy steps here"
             }
         }
+}    
     }
 }
