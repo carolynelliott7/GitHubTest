@@ -28,7 +28,7 @@ pipeline {
                 expression { env.BRANCH_NAME == 'master' }
             }
             steps {
-                echo "deploy steps here"
+                echo "deploy steps here!"
             }
         }
 }    
