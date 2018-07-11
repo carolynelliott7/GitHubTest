@@ -28,7 +28,8 @@ pipeline {
         }
         stage ('Build Artifacts') {
         	steps{
-        		archiveArtifacts artifacts: 'artifact.exe', onlyIfSuccessful: true
+        		sh 'make'
+                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
         	}
         }
 		stage ('User OK') {
