@@ -34,7 +34,7 @@ pipeline {
         			AbstractTestResultAction testResultAction = currentBuild.rawBuild.getAction(AbstractTestResultAction.class)
     				if (testResultAction != null) {
     					def failed = testResultAction.failCount
-    					if failed == 0 {
+    					if (failed == 0) {
     						archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
     					}
     				}
