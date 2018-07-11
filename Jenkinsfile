@@ -26,7 +26,7 @@ pipeline {
                 }
             }
         }
-        Stage ('Build Artifacts') {
+        stage ('Build Artifacts') {
         	steps{
         		archiveArtifacts artifacts: '', onlyIfSuccessful: true
         	}
