@@ -35,6 +35,7 @@ pipeline {
         			step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
         			throw err
    				}
+   			}
    		}
 		stage ('User OK') {
         	steps {
