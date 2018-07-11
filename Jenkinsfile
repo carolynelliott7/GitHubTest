@@ -31,6 +31,7 @@ pipeline {
         stage ('Test Status') {
         	steps {
         		script {
+        			import hudson.tasks.test.AbstractTestResultAction
         			AbstractTestResultAction testResultAction = currentBuild.rawBuild.getAction(AbstractTestResultAction.class)
     				if (testResultAction != null) {
     					def failed = testResultAction.failCount
