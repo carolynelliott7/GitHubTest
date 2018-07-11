@@ -17,7 +17,7 @@ pipeline {
         stage ('Build') {
             steps {
                 sh 'mvn -Dmaven.test.failure.ignore=true install'
-                build job: '../PipelineTestMultiBranch/CE-fix-again', propagate: false
+                
                
             }
             post {
@@ -25,6 +25,11 @@ pipeline {
                     junit 'target/surefire-reports/**/*.xml'
                 }
             }
+        }
+        stage ('User OK') {
+        	steps {
+        		input message: 'Is this build ok?', ok: 'Yes', submitter: 'mtross,carolynelliott'
+        	}
         }
         stage('build & SonarQube Scan') {
     		steps {
