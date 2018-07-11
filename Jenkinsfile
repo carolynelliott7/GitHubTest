@@ -14,13 +14,13 @@ pipeline {
                 '''
             }
        	}
-       	stage('build & SonarQube Scan') {
-    		steps {
+       	//stage('build & SonarQube Scan') {
+    		// steps {
     			// withSonarQubeEnv('SonarQubeTest') {
       			// sh 'mvn clean package sonar:sonar'}
     			// SonarQube taskId is automatically attached to the pipeline context
-			}  		
-  		}
+			// }  		
+  		// }
         stage ('Build') {
             steps {
                 sh 'mvn -Dmaven.test.failure.ignore=false install'
