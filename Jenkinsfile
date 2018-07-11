@@ -16,33 +16,20 @@ pipeline {
         }
         stage ('Build') {
             steps {
-                sh 'mvn -Dmaven.test.failure.ignore=true install'
+                sh 'mvn -Dmaven.test.failure.ignore=false install'
                 //change the above statement to false to stop the build if a test fails
                 // build job: '../PipelineTestMultiBranch/branch-off-CE-fix-again', wait: false
                
             }
             post {
-                success {
-                	
+                always {
                     junit 'target/surefire-reports/**/*.xml'
+                }
+                success {
+                	archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
                 }
             }
         }
-        stage ('Test Status') {
-        	steps {
-        		script {
-        			import hudson.tasks.test.AbstractTestResultAction
-        			AbstractTestResultAction testResultAction = currentBuild.rawBuild.getAction(AbstractTestResultAction.class)
-    				if (testResultAction != null) {
-    					def failed = testResultAction.failCount
-    					if (failed == 0) {
-    						archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
-    					}
-    				}
-    			}
-    		}
-    	}
-
 		stage ('User OK') {
         	steps {
 	        	script {
