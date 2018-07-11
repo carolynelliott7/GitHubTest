@@ -28,12 +28,14 @@ pipeline {
         }
         stage ('testing') {
         	steps {
-        		try {
-        			sh 'mvn test -B'
-    			}
-    			catch(err) {
-        			step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
-        			throw err
+        		script{
+	        		try {
+	        			sh 'mvn test -B'
+	    			}
+	    			catch(err) {
+	        			step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+	        			throw err
+	   				}
    				}
    			}
    		}
