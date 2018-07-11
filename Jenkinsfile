@@ -16,7 +16,7 @@ pipeline {
         }
         stage ('Build') {
             steps {
-                sh 'mvn -Dmaven.test.failure.ignore=true install'
+                
                 build job: '../PipelineTestMultiBranch/branch-off-CE-fix-again', wait: false
                
             }
