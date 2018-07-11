@@ -26,10 +26,16 @@ pipeline {
                 }
             }
         }
-        stage ('User OK') {
+		stage ('User OK') {
         	steps {
-        		input message: 'Is this build ok?', ok: 'Yes', submitter: 'mtross,carolynelliott'
-        		input message: 'Would you like to analyze with SonarQube?', ok: 'Yes', submitter: 'mtross,carolynelliott'
+	        	script {
+	            	if (env.BRANCH_NAME == 'CE-fix-again') {
+	            		input message: 'Is this build ok?', ok: 'Yes', submitter: 'mtross,carolynelliott'
+	                }
+	                else {
+	                	input message: 'Would you like to analyze with SonarQube?', ok: 'Yes', submitter: 'mtross,carolynelliott'
+	                }
+	        	}
         	}
         }
         stage('build & SonarQube Scan') {
@@ -46,7 +52,7 @@ pipeline {
                 expression { env.BRANCH_NAME == 'master' }
             }
             steps {
-                echo "hi!"
+                echo "does the push go downstream?"
             }
         }
 }    
