@@ -17,8 +17,8 @@ pipeline {
         stage ('Build') {
             steps {
                 sh 'mvn -Dmaven.test.failure.ignore=true install'
-                // build job: '../PipelineTestMultiBranch/CE-fix-again'
-                build '../PipelineTestMultiBranch/downstream'
+                build job: '../PipelineTestMultiBranch/CE-fix-again'
+               
             }
             post {
                 success {
@@ -40,7 +40,7 @@ pipeline {
                 expression { env.BRANCH_NAME == 'master' }
             }
             steps {
-                echo "What happens when i push to master branch?"
+                echo "hi"
             }
         }
 }    
