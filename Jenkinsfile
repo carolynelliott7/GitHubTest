@@ -40,7 +40,7 @@ pipeline {
                 expression { env.BRANCH_NAME == 'master' }
             }
             steps {
-                echo "I think it might be working?"
+                echo "What happens when i push to master branch?"
             }
         }
 }    
