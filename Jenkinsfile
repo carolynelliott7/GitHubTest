@@ -28,7 +28,7 @@ pipeline {
         }
         stage ('Build Artifacts') {
         	steps{
-        		archiveArtifacts artifacts: '', onlyIfSuccessful: true
+        		archiveArtifacts artifacts: 'program.exe', onlyIfSuccessful: true
         	}
         }
 		stage ('User OK') {
