@@ -26,6 +26,9 @@ pipeline {
                 }
             }
         }
+        Stage ('Build Artifacts') {
+        	archiveArtifacts artifacts: '', onlyIfSuccessful: true
+        }
 		stage ('User OK') {
         	steps {
 	        	script {
