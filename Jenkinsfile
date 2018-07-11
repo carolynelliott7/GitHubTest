@@ -5,11 +5,6 @@ pipeline {
         jdk 'JDK 8u172'
     }
     
-    properties([
-    pipelineTriggers([
-      [$class: "GitHubPushTrigger"]
-    ])
-  ])
     stages {
         stage ('Initialize') {
             steps {
@@ -23,6 +18,7 @@ pipeline {
             steps {
                 sh 'mvn -Dmaven.test.failure.ignore=true install'
                 // build job: '../PipelineTestMultiBranch/CE-fix-again'
+                build '../CE-fix-again/downstream'
             }
             post {
                 success {
