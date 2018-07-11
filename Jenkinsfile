@@ -39,7 +39,7 @@ pipeline {
                 expression { env.BRANCH_NAME == 'master' }
             }
             steps {
-                echo "testing automatic build"
+                echo "I think it might be working?"
             }
         }
 }    
