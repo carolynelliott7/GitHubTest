@@ -16,8 +16,8 @@ pipeline {
         }
         stage ('Build') {
             steps {
-                
-                build job: '../PipelineTestMultiBranch/branch-off-CE-fix-again', wait: false
+                sh 'mvn -Dmaven.test.failure.ignore=false install'
+                // build job: '../PipelineTestMultiBranch/branch-off-CE-fix-again', wait: false
                
             }
             post {
@@ -26,19 +26,6 @@ pipeline {
                 }
             }
         }
-        stage ('testing') {
-        	steps {
-        		script{
-	        		try {
-	        			sh 'mvn test -B'
-	    			}
-	    			catch(err) {
-	        			step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
-	        			throw err
-	   				}
-   				}
-   			}
-   		}
 		stage ('User OK') {
         	steps {
 	        	script {
