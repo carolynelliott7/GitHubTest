@@ -29,6 +29,7 @@ pipeline {
         stage ('User OK') {
         	steps {
         		input message: 'Is this build ok?', ok: 'Yes', submitter: 'mtross,carolynelliott'
+        		input message: 'Would you like to analyze with SonarQube?', ok: 'Yes', submitter: 'mtross,carolynelliott'
         	}
         }
         stage('build & SonarQube Scan') {
