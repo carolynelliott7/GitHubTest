@@ -18,7 +18,7 @@ pipeline {
             steps {
                 sh 'mvn -Dmaven.test.failure.ignore=true install'
                 // build job: '../PipelineTestMultiBranch/CE-fix-again'
-                build '../CE-fix-again/downstream'
+                build '../PipelineTestMultiBranch/downstream'
             }
             post {
                 success {
