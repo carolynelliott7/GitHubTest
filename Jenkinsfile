@@ -21,6 +21,18 @@ pipeline {
     			// SonarQube taskId is automatically attached to the pipeline context
 			// }  		
   		// }
+  		// stage("Quality Gate") {
+            // steps {
+                // timeout(time: 1, unit: 'HOURS') {
+                    // Parameter indicates whether to set pipeline to UNSTABLE if Quality Gate fails
+                    // true = set pipeline to UNSTABLE, false = don't
+                    // Requires SonarQube Scanner for Jenkins 2.7+
+                    // waitForQualityGate abortPipeline: true
+                // }
+            // }
+        // }
+        // Note: Jenkins still cannot communicate with the SonarQube server. The "Quality Gate" stage should abort the pipeline if the Quality Gate does not pass.
+        // Quality Gate stage will not work unless the webhook inside SonarQube is working properly.
         stage ('Build') {
             steps {
                 sh 'mvn -Dmaven.test.failure.ignore=false install'
