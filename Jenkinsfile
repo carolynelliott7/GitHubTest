@@ -14,13 +14,13 @@ pipeline {
                 '''
             }
        	}
-       	//stage('build & SonarQube Scan') {
-    		// steps {
-    			// withSonarQubeEnv('SonarQubeTest') {
-      			// sh 'mvn clean package sonar:sonar'}
-    			// SonarQube taskId is automatically attached to the pipeline context
-			// }  		
-  		// }
+       	stage('build & SonarQube Scan') {
+    		 steps {
+    			 withSonarQubeEnv('SonarQubeTest') {
+      			 sh 'mvn clean package sonar:sonar'}
+    			 SonarQube taskId is automatically attached to the pipeline context
+			 }  		
+  		}
   		// stage("Quality Gate") {
             // steps {
                 // timeout(time: 1, unit: 'HOURS') {
