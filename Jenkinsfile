@@ -18,7 +18,7 @@ pipeline {
     		 steps {
     			 withSonarQubeEnv('SonarQubeTest') {
       			 sh 'mvn clean package sonar:sonar'}
-    			 SonarQube taskId is automatically attached to the pipeline context
+    			 // SonarQube taskId is automatically attached to the pipeline context
 			 }  		
   		}
   		// stage("Quality Gate") {
