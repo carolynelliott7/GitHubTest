@@ -3,6 +3,7 @@ pipeline {
     tools {
         maven 'Maven 3.5.4'
         jdk 'JDK 8u172'
+        
     }
     
     stages {
@@ -20,12 +21,13 @@ pipeline {
       			 //sh 'mvn clean package sonar:sonar'}
     			 // SonarQube taskId is automatically attached to the pipeline context
     			 
-    			 script{
-    			 def scannerHome = tool 'SonarQube Scanner 2.8';
-    			 withSonarQubeEnv('My SonarQube Server') {
-      				sh "${scannerHome}/bin/sonar-scanner"}
-      			 }
-			 }  		
+    			 script {
+             		scannerHome = tool 'SonarScanner';
+        			}
+     				withSonarQubeEnv('SonarQube') {
+         				bat "${scannerHome}/bin/sonar-scanner.bat" 
+    				}
+			 	 }  		
   		}
   		// stage("Quality Gate") {
             // steps {
