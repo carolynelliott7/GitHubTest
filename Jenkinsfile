@@ -25,7 +25,8 @@ pipeline {
      				withSonarQubeEnv('SonarQube') {
          				bat "sonar-scanner-3.2.0.1227-windows/bin/sonar-scanner.bat" 
     				}
-			 	 }  		
+			 	 }  
+			 }		
   		}
   		// stage("Quality Gate") {
             // steps {
