@@ -22,7 +22,6 @@ pipeline {
     			 // SonarQube taskId is automatically attached to the pipeline context
     			 
     			 script {
-        			}
      				withSonarQubeEnv('SonarQube') {
          				bat "sonar-scanner-3.2.0.1227-windows/bin/sonar-scanner.bat" 
     				}
