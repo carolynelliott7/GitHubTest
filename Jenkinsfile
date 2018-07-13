@@ -15,8 +15,8 @@ pipeline {
                 '''
             }
        	}
-       	stage('build & SonarQube Scan') {
-    		 steps {
+       	// stage('build & SonarQube Scan') {
+    		 // steps {
     			 // withSonarQubeEnv('SonarQubeTest') {
       			 // sh 'mvn clean package sonar:sonar'}
     			 // SonarQube taskId is automatically attached to the pipeline context
@@ -26,8 +26,8 @@ pipeline {
          				// bat "sonar-scanner-3.2.0.1227-windows/bin/sonar-scanner.bat" 
     				// }
 			 	//  }  
-			 }	
-  		}
+			 // }	
+  		// }
   		// stage("Quality Gate") {
             // steps {
                 // timeout(time: 1, unit: 'HOURS') {
