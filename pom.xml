@@ -6,14 +6,48 @@
     <groupId>org.springframework</groupId>
     <artifactId>gs-spring-boot</artifactId>
     <version>0.1.0</version>
+	
+	
+	// new
+	<groupId>parent</groupId>
+  <artifactId>A</artifactId>
+  <packaging>pom</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>Maven Webapp</name>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.3.RELEASE</version>
-    </parent>
-
+    
+	 <distributionManagement>	   	
+	   	// new
+	   	<repository>
+	      <id>releases</id>
+	      <url>http://localhost:8081/nexus/content/repositories/thirdparty/</url>
+	    </repository>
+	    <snapshotRepository>
+	      <id>snapshots</id>
+	      <url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
+	    </snapshotRepository>
+	 </distributionManagement>
+	
+    <parents>
+	    <parent>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter-parent</artifactId>
+	        <version>2.0.3.RELEASE</version>
+	    </parent>
+	    
+	    
+	</parents>
+	
     <dependencies>
+    
+    	//new
+    	<dependency>
+	      <groupId>com.oracle</groupId>
+	      <artifactId>ojdbc5</artifactId>
+	      <version>11.2.0.1</version>
+	    </dependency>
+	    
+    
         <dependency>
             <groupId>org.codehaus.sonar-plugins.java</groupId>
             <artifactId>sonar-jacoco-listeners</artifactId>
@@ -39,7 +73,8 @@
         <!-- end::tests[] -->
     </dependencies>
 
-    <properties>
+    <properties>    
+    
         <java.version>1.8</java.version>
       	<!--  This format is used by SonarQube. If you need another format see "buildnumber-maven-plugin" -->
 		<maven.build.timestamp.format>MM.yyyy</maven.build.timestamp.format>
@@ -86,6 +121,32 @@
    
     <build>
         <plugins>
+        	<plugin>
+			   <groupId>org.apache.maven.plugins</groupId>
+			   <artifactId>maven-deploy-plugin</artifactId>
+			   <configuration>
+			      <skip>true</skip>
+			   </configuration>
+			</plugin>
+			// <plugin>
+			   // <groupId>org.sonatype.plugins</groupId>
+			   // <artifactId>nexus-staging-maven-plugin</artifactId>
+			   // <version>1.5.1</version>
+			   // <executions>
+			   //   <execution>
+			   //      <id>default-deploy</id>
+			   //      <phase>deploy</phase>
+			   //      <goals>
+			   //         <goal>deploy</goal>
+			   //      </goals>
+			   //   </execution>
+			   // </executions>
+			   // <configuration>
+			   //   <serverId>nexus</serverId>
+			   //   <nexusUrl>http://localhost:8081/nexus/</nexusUrl>
+			   //   <skipStaging>true</skipStaging>
+			   // </configuration>
+			// </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
