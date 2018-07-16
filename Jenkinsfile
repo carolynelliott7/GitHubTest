@@ -77,7 +77,7 @@ pipeline {
             steps {
                 // create the release version then create a tage with it , then push to nexus releases the released jar
                 script {
-                    def mvnHome = tool 'Maven 3.3.9' //
+                    def mvnHome = tool 'Maven 3.5.4' //
                     if (currentBuild.result == null || currentBuild.result == 'SUCCESS') {
                         def v = getReleaseVersion()
                         releasedVersion = v;
