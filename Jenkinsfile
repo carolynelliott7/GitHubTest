@@ -83,7 +83,24 @@ pipeline {
 		   //   gitHub.statusUpdate commitId, 'success', 'analysis', 'Nexus Lifecycle Analysis passed', "${evaluation.applicationCompositionReportUrl}"
 		  //  }
 		 // }
-
+		// new - trying to connect to nexus
+		stage('Publish') {
+			steps {
+				script {
+					def pom = readMavenPom file: 'pom.xml'
+					nexusPublisher nexusInstanceId: 'nexus2', \
+					nexusRepositoryId: 'releases', \
+					packages: [[$class: 'MavenPackage', \
+					mavenAssetList: [[classifier: '', extension: '', \
+					filePath: "target/${pom.artifactId}-${pom.version}.${pom.packaging}"]], \
+					mavenCoordinate: [artifactId: "${pom.artifactId}", \
+					groupId: "${pom.groupId}", \
+					packaging: "${pom.packaging}", \
+					version: "${pom.version}"]]]
+				}
+			}
+		}
+    
         stage ('Deploy') {
             when {
                 expression { env.BRANCH_NAME == 'master' }
