@@ -101,7 +101,7 @@ pipeline {
 					// groupId: "${pom.groupId}", \
 					// packaging: "${pom.packaging}", \
 					// version: "${pom.version}"]]]
-				}
+				// }
 			}
 		}
     
