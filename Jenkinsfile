@@ -87,16 +87,20 @@ pipeline {
 		stage('Publish') {
 			steps {
 				script {
-					def pom = readMavenPom file: 'pom.xml'
+					nexusArtifactUploader artifacts: [[artifactId: 'gs-spring-boot', classifier: '', file: 'C:\\Users\\carolynelliott\\Documents\\hello-world\\target\\gs-spring-boot-0.1.0.jar', type: 'jar']], credentialsId: '', groupId: 'org.springframework', nexusUrl: '10.0.1.153:8081/nexus/', nexusVersion: 'nexus2', protocol: 'http', repository: 'thirdparty', version: '2.14.9'
+				}
+				
+				
+					// def pom = readMavenPom file: 'pom.xml'
 					// nexusPublisher nexusInstanceId: 'nexus2', \
 					// nexusRepositoryId: 'releases', \
-					packages: [[$class: 'MavenPackage', \
-					mavenAssetList: [[classifier: '', extension: '', \
-					filePath: "target/${pom.artifactId}-${pom.version}.${pom.packaging}"]], \
-					mavenCoordinate: [artifactId: "${pom.artifactId}", \
-					groupId: "${pom.groupId}", \
-					packaging: "${pom.packaging}", \
-					version: "${pom.version}"]]]
+					// packages: [[$class: 'MavenPackage', \
+					// mavenAssetList: [[classifier: '', extension: '', \
+					// filePath: "target/${pom.artifactId}-${pom.version}.${pom.packaging}"]], \
+					// mavenCoordinate: [artifactId: "${pom.artifactId}", \
+					// groupId: "${pom.groupId}", \
+					// packaging: "${pom.packaging}", \
+					// version: "${pom.version}"]]]
 				}
 			}
 		}
