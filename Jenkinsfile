@@ -84,11 +84,11 @@ pipeline {
 		  //  }
 		 // }
 		// new - trying to connect to nexus
-		stage('Publish') {
-			steps {
-				script {
-					nexusArtifactUploader artifacts: [[artifactId: 'gs-spring-boot', classifier: '', file: 'target/gs-spring-boot-0.1.0.jar', type: 'jar']], credentialsId: '', groupId: 'org.springframework', nexusUrl: '10.0.1.153:8081/nexus/', nexusVersion: 'nexus2', protocol: 'http', repository: 'releases', version: '1.0'
-				}
+		// stage('Publish') {
+			// steps {
+				// script {
+				//	nexusArtifactUploader artifacts: [[artifactId: 'gs-spring-boot', classifier: '', file: 'target/gs-spring-boot-0.1.0.jar', type: 'jar']], credentialsId: '', groupId: 'org.springframework', nexusUrl: '10.0.1.153:8081/nexus/', nexusVersion: 'nexus2', protocol: 'http', repository: 'releases', version: '1.0'
+				// }
 				
 				
 					// def pom = readMavenPom file: 'pom.xml'
@@ -102,8 +102,8 @@ pipeline {
 					// packaging: "${pom.packaging}", \
 					// version: "${pom.version}"]]]
 				// }
-			}
-		}
+		//	}
+		// }
     
         stage ('Deploy') {
             when {
