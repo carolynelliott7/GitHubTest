@@ -88,7 +88,7 @@ pipeline {
 			steps {
 				script {
 					def pom = readMavenPom file: 'pom.xml'
-					nexusPublisher nexusInstanceId: 'nexus2', \
+					// nexusPublisher nexusInstanceId: 'nexus2', \
 					nexusRepositoryId: 'releases', \
 					packages: [[$class: 'MavenPackage', \
 					mavenAssetList: [[classifier: '', extension: '', \
