@@ -89,8 +89,8 @@ pipeline {
 		  //  }
 		 // }
 		// new - trying to connect to nexus
-		 stage('Publish') {
-			 steps {
+		 // stage('Publish') {
+			 // steps {
 				 // script {
 					// nexusArtifactUploader artifacts: [[artifactId: 'gs-spring-boot', classifier: '', file: 'target/gs-spring-boot-0.1.0.jar', type: 'jar']], credentialsId: '', groupId: 'org.springframework', nexusUrl: '10.0.1.153:8081/nexus', nexusVersion: 'nexus2', protocol: 'http', repository: 'thirdparty', version: '0.1.0'
 				 // }
@@ -112,8 +112,8 @@ pipeline {
 				// script {
 					// nexusPublisher nexusInstanceId: 'localNexus', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/gs-spring-boot-0.1.0.jar']], mavenCoordinate: [artifactId: 'gs-spring-boot', groupId: 'org.springframework', packaging: 'jar', version: '0.1.0']]]
 				// }
-			}
-		 }
+			// }
+		 // }
 		 
 		// new stage 7/18
 		stage ('Retrieve Artifact from Nexus')
