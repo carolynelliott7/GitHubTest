@@ -52,7 +52,7 @@ pipeline {
             steps {
                 sh 'mvn -Dmaven.test.failure.ignore=false install'
                 //change the above statement to false to stop the build if a test fails
-               
+               sh 'mvn -Dmaven.test.failure.ignore clean package
             }
             post {
                 always {
@@ -91,9 +91,9 @@ pipeline {
 		// new - trying to connect to nexus
 		 stage('Publish') {
 			 steps {
-				 script {
-					nexusArtifactUploader artifacts: [[artifactId: 'gs-spring-boot', classifier: '', file: 'target/gs-spring-boot-0.1.0.jar', type: 'jar']], credentialsId: '', groupId: 'org.springframework', nexusUrl: '10.0.1.153:8081/nexus', nexusVersion: 'nexus2', protocol: 'http', repository: 'thirdparty', version: '0.1.0'
-				 }
+				 // script {
+					// nexusArtifactUploader artifacts: [[artifactId: 'gs-spring-boot', classifier: '', file: 'target/gs-spring-boot-0.1.0.jar', type: 'jar']], credentialsId: '', groupId: 'org.springframework', nexusUrl: '10.0.1.153:8081/nexus', nexusVersion: 'nexus2', protocol: 'http', repository: 'thirdparty', version: '0.1.0'
+				 // }
 				
 				
 					// def pom = readMavenPom file: 'pom.xml'
@@ -107,6 +107,9 @@ pipeline {
 					// packaging: "${pom.packaging}", \
 					// version: "${pom.version}"]]]
 				// }
+				script {
+					nexusPublisher nexusInstanceId: 'localNexus', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/*.jar']], mavenCoordinate: [artifactId: 'gs-spring-boot', groupId: 'org.springframework', packaging: 'jar', version: '0.1.0']]]
+				}
 			}
 		 }
     
