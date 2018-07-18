@@ -52,7 +52,7 @@ pipeline {
             steps {
                 sh 'mvn -Dmaven.test.failure.ignore=false install'
                 //change the above statement to false to stop the build if a test fails
-                // build job: '../PipelineTestMultiBranch/branch-off-CE-fix-again', wait: false
+                sh 'mvn build'
                
             }
             post {
@@ -93,7 +93,7 @@ pipeline {
 		 stage('Publish') {
 			 steps {
 				 script {
-					nexusArtifactUploader artifacts: [[artifactId: 'gs-spring-boot', classifier: '', file: 'target/gs-spring-boot-0.1.0.jar', type: 'jar']], credentialsId: '', groupId: 'org.springframework', nexusUrl: '10.0.1.153:8081/nexus', nexusVersion: 'nexus2', protocol: 'http', repository: 'releases', version: '0.1.0'
+					nexusArtifactUploader artifacts: [[artifactId: 'gs-spring-boot', classifier: '', file: 'target/gs-spring-boot-0.1.0.jar', type: 'jar']], credentialsId: '', groupId: 'org.springframework', nexusUrl: '10.0.1.153:8081/nexus', nexusVersion: 'nexus2', protocol: 'http', repository: 'thirdparty', version: '0.1.0'
 				 }
 				
 				
