@@ -84,10 +84,10 @@
     
     <!-- new 7/18 -->
    <repositories>
-    <repository>
-      <id>releases</id>
-      <url>http://10.0.1.153:8081/nexus/content/groups/public/</url>
-    </repository>
+  <repository>
+    <id>releases</id>
+    <url>http://10.0.1.153:8081/nexus/content/repositories/releases</url>
+  </repository>
   </repositories>
   
       <dependencies>
@@ -98,13 +98,8 @@
 		      <version>1.0.0</version>
 		      <type>ear</type>
 		 </dependency>-->
+
     	
-    	<!--  new on 7//18 -->
-    	<dependency>
-		  <groupId>org.springframework</groupId>
-		  <artifactId>gs-spring-boot</artifactId>
-		  <version>0.1.0</version>
-		</dependency>
    
         <dependency>
             <groupId>org.codehaus.sonar-plugins.java</groupId>
