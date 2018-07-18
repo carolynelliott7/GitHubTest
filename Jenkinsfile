@@ -1,5 +1,11 @@
 pipeline {
     agent any
+    
+    // new 7/18 trying to trigger from bitbucket
+    triggers {
+ 		 bitbucketPush()
+	}
+    
     tools {
         maven 'Maven 3.5.4'
         jdk 'JDK 8u172'
