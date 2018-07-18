@@ -52,7 +52,7 @@ pipeline {
             steps {
                 sh 'mvn -Dmaven.test.failure.ignore=false install'
                 //change the above statement to false to stop the build if a test fails
-               sh 'mvn -Dmaven.test.failure.ignore clean package
+               sh 'mvn -Dmaven.test.failure.ignore clean package'
             }
             post {
                 always {
