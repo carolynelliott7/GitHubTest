@@ -13,24 +13,14 @@
 	        <version>2.0.3.RELEASE</version>
 	    </parent>
 	    
-	    <!-- new 
+	
 	<distributionManagement>
 	    <repository>
 	      <id>nexus</id>
-	      <name>Nexus Releases</name>
-	      <url>http://10.0.1.153:8081/nexus/service/local/staging/deploy/maven2</url>
+	      <name>NexusTest</name>
+	      <url>http://10.0.1.153:8081/nexus</url>
 	    </repository>
-	    <snapshotRepository>
-	      <id>nexus</id>
-	      <name>Nexus Snapshot</name>
-	      <url>http://10.0.1.153:8081/nexus/content/repositories/snapshots</url>
-	    </snapshotRepository>
-	    <site>
-	      <id>nexus</id>
-	      <name>Nexus Sites</name>
-	      <url>dav:http://10.0.1.153:8081/nexus/content/sites/site/</url>
-	    </site>
-	 </distributionManagement>-->
+	 </distributionManagement>
 	
 	
     <dependencies>
