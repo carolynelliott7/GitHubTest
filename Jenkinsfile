@@ -116,7 +116,7 @@ pipeline {
                 expression { env.BRANCH_NAME == 'master' }
             }
             steps {
-                echo "does the push go downstream?"
+                echo "is the build trigger working?"
             }
         }
 }    
