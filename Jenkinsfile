@@ -119,7 +119,7 @@ pipeline {
 		stage ('Retrieve Artifact from Nexus'){
 			steps {
 				script {
-					artifactResolver artifacts: [artifact(artifactId: 'gs-spring-boot', groupId: 'org.springframework', version: 'LATEST')], targetDirectory: 'target'
+					artifactResolver artifacts: [artifact(artifactId: 'gs-spring-boot', groupId: 'org.springframework', version: '0.1.0')], targetDirectory: 'target'
     			}
     		}
     	}
