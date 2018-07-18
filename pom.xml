@@ -13,7 +13,7 @@
 	        <version>2.0.3.RELEASE</version>
 	    </parent>
 	    
-	
+		<!-- I don't think this section is doing anything useful -->
 		<distributionManagement>
 		  <repository>
 		    <id>releases</id>
@@ -23,8 +23,16 @@
 	
 	
     <dependencies>
-    
+    	<!-- new 7/18 -->
     	
+    	 <dependency>
+		      <groupId>com.foobar.templates</groupId>
+		      <artifactId>maventemplate-ear</artifactId>
+		      <version>${distversion}</version>
+		      <type>ear</type>
+		 </dependency>
+    	
+   
         <dependency>
             <groupId>org.codehaus.sonar-plugins.java</groupId>
             <artifactId>sonar-jacoco-listeners</artifactId>
@@ -172,11 +180,17 @@
 			<version>0.0.6</version>
 		    </dependency> -->
     </dependencies>
+    
+    <!-- new 7/18 -->
+   	<ciManagement>
+	    <system>jenkins</system>
+	    <url>http://jenkins.gcnp.local:8080/</url>
+	</ciManagement>
 
     <properties>    
     
-    	<!-- new
-    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> -->
+    	<!-- new -->
+    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     
         <java.version>1.8</java.version>
       	<!--  This format is used by SonarQube. If you need another format see "buildnumber-maven-plugin" -->
@@ -221,6 +235,14 @@
 		<!-- <sonar.tests>src/test/java</sonar.tests> -->
 		<!-- === END of Sonar/Reporting settings === -->
     </properties>
+    
+    <!-- new 7/18 -->
+   <repositories>
+    <repository>
+      <id>project</id>
+      <url>http://10.0.1.153:8081/nexus/content/groups/public/</url>
+    </repository>
+  </repositories>
    
     <build>
         <plugins>
@@ -231,25 +253,26 @@
 			      <skip>true</skip>
 			   </configuration>
 			</plugin>
-			<!-- <plugin>
-			   // <groupId>org.sonatype.plugins</groupId>
-			   // <artifactId>nexus-staging-maven-plugin</artifactId>
-			   // <version>1.5.1</version>
-			   // <executions>
-			   //   <execution>
-			   //      <id>default-deploy</id>
-			   //      <phase>deploy</phase>
-			   //      <goals>
-			   //         <goal>deploy</goal>
-			   //      </goals>
-			   //   </execution>
-			   // </executions>
-			   // <configuration>
-			   //   <serverId>nexus</serverId>
-			   //   <nexusUrl>http://10.0.1.153:8081/nexus/</nexusUrl>
-			   //   <skipStaging>true</skipStaging>
-			   // </configuration>
-			// </plugin> -->
+			<!-- added this plugin back in to try to connect to nexus 7/18 -->
+			<plugin>
+			    <groupId>org.sonatype.plugins</groupId>
+			    <artifactId>nexus-staging-maven-plugin</artifactId>
+			    <version>1.5.1</version>
+			    <executions>
+			      <execution>
+			         <id>default-deploy</id>
+			         <phase>deploy</phase>
+			         <goals>
+			            <goal>deploy</goal>
+			         </goals>
+			      </execution>
+			    </executions>
+			    <configuration>
+			      <serverId>nexus</serverId>
+			      <nexusUrl>http://10.0.1.153:8081/nexus/</nexusUrl>
+			      <skipStaging>true</skipStaging>
+			    </configuration>
+			 </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -356,6 +379,34 @@
 		          <locales>en,fr</locales>
 		        </configuration>
 		      </plugin> -->
+		      
+		  	<!-- new 7/18 trying to download from nexus repository -->
+		  	<plugin>
+		        <artifactId>maven-antrun-plugin</artifactId>
+		        <version>1.7</version>
+		        <executions>
+		          <execution>
+		            <phase>compile</phase>
+		            <configuration>
+		              <target>
+		                <!-- dump all available properties -->
+		                <echoproperties />
+		                <exec dir="." executable="cmd" osfamily="windows">
+		                  <arg value="/c"/>
+		                  <arg value="deploy.cmd ${maven.dependency.com.foobar.templates.maventemplate-ear.ear.path} ${environment} ${distversion}"/>
+		                </exec>
+		                <exec dir="." executable="/bin/bash" osfamily="unix">
+		                  <arg value="-c"/>
+		                  <arg value="./deploy.sh ${maven.dependency.com.foobar.templates.maventemplate-ear.ear.path} ${environment} ${distversion}"/>
+		                </exec>
+		              </target>
+		            </configuration>
+		            <goals>
+		              <goal>run</goal>
+		            </goals>
+		          </execution>
+		        </executions>
+		      </plugin>
         </plugins>
         </build>
 
