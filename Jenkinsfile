@@ -63,18 +63,18 @@ pipeline {
                 }
             }
         }
-		stage ('User OK') {
-        	steps {
-	        	script {
-	            	if (env.BRANCH_NAME == 'CE-fix-again') {
-	            		input message: 'Is this build ok?', ok: 'Yes', submitter: 'mtross,carolynelliott'
-	                }
-	                else {
-	                	input message: 'Would you like to analyze with SonarQube?', ok: 'Yes', submitter: 'mtross,carolynelliott'
-	                }
-	        	}
-        	}
-        }
+		//stage ('User OK') {
+        	//steps {
+	        	//script {
+	            	//if (env.BRANCH_NAME == 'CE-fix-again') {
+	            		//input message: 'Is this build ok?', ok: 'Yes', submitter: 'mtross,carolynelliott'
+	               // }
+	               // else {
+	               // 	input message: 'Would you like to analyze with SonarQube?', ok: 'Yes', submitter: 'mtross,carolynelliott'
+	               // }
+	        //	}
+        //	}
+        // }
         
         // stage('Nexus Lifecycle Analysis') {
 		   // gitHub.statusUpdate commitId, 'pending', 'analysis', 'Nexus Lifecycle Analysis in running'

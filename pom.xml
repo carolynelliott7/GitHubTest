@@ -99,7 +99,12 @@
 		      <type>ear</type>
 		 </dependency>-->
     	
-    	
+    	<!--  new on 7//18 -->
+    	<dependency>
+		  <groupId>org.springframework</groupId>
+		  <artifactId>gs-spring-boot</artifactId>
+		  <version>0.1.0</version>
+		</dependency>
    
         <dependency>
             <groupId>org.codehaus.sonar-plugins.java</groupId>
