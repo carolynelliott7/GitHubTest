@@ -14,13 +14,12 @@
 	    </parent>
 	    
 	
-	<distributionManagement>
-	    <repository>
-	      <id>nexus</id>
-	      <name>NexusTest</name>
-	      <url>http://10.0.1.153:8081/nexus</url>
-	    </repository>
-	 </distributionManagement>
+		<distributionManagement>
+		  <repository>
+		    <id>releases</id>
+		    <url>http://10.0.1.153:8081/nexus/content/repositories/releases</url>
+		  </repository>
+		</distributionManagement>
 	
 	
     <dependencies>
