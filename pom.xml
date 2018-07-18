@@ -23,14 +23,14 @@
 	
 	
     <dependencies>
-    	<!-- new 7/18 -->
-    	
+    	<!-- new 7/18 
     	 <dependency>
 		      <groupId>com.foobar.templates</groupId>
 		      <artifactId>maventemplate-ear</artifactId>
-		      <version>${distversion}</version>
+		      <version>1.0.0</version>
 		      <type>ear</type>
-		 </dependency>
+		 </dependency>-->
+    	
     	
    
         <dependency>
