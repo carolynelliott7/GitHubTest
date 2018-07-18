@@ -107,12 +107,22 @@ pipeline {
 					// packaging: "${pom.packaging}", \
 					// version: "${pom.version}"]]]
 				// }
-				script {
-					nexusPublisher nexusInstanceId: 'localNexus', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/gs-spring-boot-0.1.0.jar']], mavenCoordinate: [artifactId: 'gs-spring-boot', groupId: 'org.springframework', packaging: 'jar', version: '0.1.0']]]
-				}
+				
+				// I think the script below will work but editing out 7/18 to test other parts of pipeline
+				// script {
+					// nexusPublisher nexusInstanceId: 'localNexus', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/gs-spring-boot-0.1.0.jar']], mavenCoordinate: [artifactId: 'gs-spring-boot', groupId: 'org.springframework', packaging: 'jar', version: '0.1.0']]]
+				// }
 			}
 		 }
-    
+		 
+		// new stage 7/18
+		stage ('Retrieve Artifact from Nexus')
+			steps {
+				script {
+					artifactResolver artifacts: [artifact(artifactId: 'gs-spring-boot', groupId: 'org.springframework', version: 'LATEST')], targetDirectory: 'target'
+    			}
+    		}
+    	}
         stage ('Deploy') {
             when {
                 expression { env.BRANCH_NAME == 'master' }
