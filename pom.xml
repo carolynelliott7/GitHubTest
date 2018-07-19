@@ -16,8 +16,8 @@
 		<!-- I don't think this section is doing anything useful -->
 		<distributionManagement>
 		  <repository>
-		    <id>thirdparty</id>
-		    <url>http://10.0.1.153:8081/nexus/content/repositories/thirdparty</url>
+		    <id>releases</id>
+		    <url>http://10.0.1.153:8081/nexus/content/repositories/releases</url>
 		  </repository>
 		</distributionManagement>
 	
