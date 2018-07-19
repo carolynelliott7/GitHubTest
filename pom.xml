@@ -250,14 +250,31 @@
     </dependencies>
    
     <build>
+       
         <plugins>
+        	<!-- new on 7/19
         	<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.1</version>
+				<extensions>true</extensions>
+				<configuration>
+					<nexusUrl>http://localhost:8081/nexus/</nexusUrl>
+					<serverId>localNexus</serverId>
+				</configuration>
+			</plugin>  -->
+        
+        	 <!-- above plugin replaces maven deploy plugin
+        	 <plugin>
 			   <groupId>org.apache.maven.plugins</groupId>
 			   <artifactId>maven-deploy-plugin</artifactId>
 			   <configuration>
 			      <skip>true</skip>
 			   </configuration>
-			</plugin>
+			</plugin> -->
+			
+			
+			
 			<!-- added this plugin back in to try to connect to nexus 7/18 -->
 			<plugin>
 			    <groupId>org.sonatype.plugins</groupId>
@@ -273,7 +290,7 @@
 			      </execution>
 			    </executions>
 			    <configuration>
-			      <serverId>nexus</serverId>
+			      <serverId>localNexus</serverId>
 			      <nexusUrl>http://10.0.1.153:8081/nexus/</nexusUrl>
 			      <skipStaging>true</skipStaging>
 			    </configuration>
