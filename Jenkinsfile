@@ -128,7 +128,7 @@ pipeline {
                 expression { env.BRANCH_NAME == 'master' }
             }
             steps {
-                echo "testing bitbucket hook"
+                echo "testing bitbucket hook again"
             }
         }
     
