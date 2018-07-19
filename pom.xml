@@ -83,12 +83,12 @@
     
     
     <!-- new 7/18 -->
-   <repositories>
-  <repository>
-    <id>releases</id>
-    <url>http://10.0.1.153:8081/nexus/content/repositories</url>
-  </repository>
-  </repositories>
+  <pluginRepositories>
+  	<pluginRepository>
+    	<id>releases</id>
+    	<url>http://10.0.1.153:8081/nexus/content/repositories</url>
+  	</pluginRepository>
+  </pluginRepositories>
   
       <dependencies>
     	<!-- new 7/18 
