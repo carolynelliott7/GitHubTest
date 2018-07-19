@@ -57,7 +57,7 @@ pipeline {
                 expression { env.BRANCH_NAME == 'master' }
             }
             steps {
-                echo "trigger build?5"
+                echo "trigger build?6"
             }
       	}
   }
