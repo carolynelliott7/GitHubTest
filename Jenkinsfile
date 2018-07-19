@@ -22,8 +22,6 @@ pipeline {
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
                 '''
-            	// git 'https://github.com/jenkinsci/jenkins.git'
-      			// mvnHome = tool 'M3'
             
             }
        	}
@@ -109,7 +107,7 @@ pipeline {
                 expression { env.BRANCH_NAME == 'master' }
             }
             steps {
-                echo "testing bitbucket hook again2"
+                echo "does blue ocean trigger build?"
             }
         }
     
