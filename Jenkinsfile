@@ -21,6 +21,9 @@ pipeline {
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
                 '''
+            	// git 'https://github.com/jenkinsci/jenkins.git'
+      			// mvnHome = tool 'M3'
+            
             }
        	}
        	// stage('build & SonarQube Scan') {
@@ -76,46 +79,21 @@ pipeline {
         //	}
         // }
         
-        // stage('Nexus Lifecycle Analysis') {
-		   // gitHub.statusUpdate commitId, 'pending', 'analysis', 'Nexus Lifecycle Analysis in running'
-		
-		   //  def evaluation = nexusPolicyEvaluation failBuildOnNetworkError: false, iqApplication: 'nexus-jenkins-plugin', iqScanPatterns: [[scanPattern: 'target/nexus-jenkins-plugin.hpi']], iqStage: 'build', jobCredentialsId: ''
-		
-		   // if (currentBuild.result == 'FAILURE') {
-		   //   gitHub.statusUpdate commitId, 'failure', 'analysis', 'Nexus Lifecycle Analysis failed', "${evaluation.applicationCompositionReportUrl}"
-		   //   return
-		   //  } else {
-		   //   gitHub.statusUpdate commitId, 'success', 'analysis', 'Nexus Lifecycle Analysis passed', "${evaluation.applicationCompositionReportUrl}"
-		  //  }
-		 // }
-		// new - trying to connect to nexus
-		 // stage('Publish') {
-			 // steps {
-				 // script {
-					// nexusArtifactUploader artifacts: [[artifactId: 'gs-spring-boot', classifier: '', file: 'target/gs-spring-boot-0.1.0.jar', type: 'jar']], credentialsId: '', groupId: 'org.springframework', nexusUrl: '10.0.1.153:8081/nexus', nexusVersion: 'nexus2', protocol: 'http', repository: 'thirdparty', version: '0.1.0'
-				 // }
-				
-				
-					// def pom = readMavenPom file: 'pom.xml'
-					// nexusPublisher nexusInstanceId: 'nexus2', \
-					// nexusRepositoryId: 'releases', \
-					// packages: [[$class: 'MavenPackage', \
-					// mavenAssetList: [[classifier: '', extension: '', \
-					// filePath: "target/${pom.artifactId}-${pom.version}.${pom.packaging}"]], \
-					// mavenCoordinate: [artifactId: "${pom.artifactId}", \
-					// groupId: "${pom.groupId}", \
-					// packaging: "${pom.packaging}", \
-					// version: "${pom.version}"]]]
-				// }
+
+		 stage('Publish') {
+			  steps {
+				  //script {
+					// nexusArtifactUploader artifacts: [[artifactId: 'gs-spring-boot', classifier: '', file: 'target/gs-spring-boot-0.1.0.jar', type: 'jar']], credentialsId: 'admin', groupId: 'org.springframework', nexusUrl: '10.0.1.153:8081/nexus', nexusVersion: 'nexus2', protocol: 'http', repository: 'releases', version: '0.1.0'
+				  //}
+			 //}
 				
 				// I think the script below will work but editing out 7/18 to test other parts of pipeline
-				// script {
-					// nexusPublisher nexusInstanceId: 'localNexus', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/gs-spring-boot-0.1.0.jar']], mavenCoordinate: [artifactId: 'gs-spring-boot', groupId: 'org.springframework', packaging: 'jar', version: '0.1.0']]]
-				// }
-			// }
-		 // }
+				 script {
+					 nexusPublisher nexusInstanceId: 'localNexus', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/gs-spring-boot-0.1.0.jar']], mavenCoordinate: [artifactId: 'gs-spring-boot', groupId: 'org.springframework', packaging: 'jar', version: '0.1.0']]]
+				 }
+			 }
+		 }
 		 
-		// new stage 7/18
 		stage ('Retrieve Artifact from Nexus'){
 			steps {
 				script {

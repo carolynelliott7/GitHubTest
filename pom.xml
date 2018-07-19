@@ -247,6 +247,8 @@
 			<artifactId>jyield</artifactId>
 			<version>0.0.6</version>
 		    </dependency> -->
+    
+
     </dependencies>
    
     <build>
@@ -293,7 +295,7 @@
 			      <serverId>localNexus</serverId>
 			      <nexusUrl>http://10.0.1.153:8081/nexus/</nexusUrl>
 			      <skipStaging>false</skipStaging>
-			      <!-- line above was originally set to true -->
+			      <!-- line above was originally true -->
 			    </configuration>
 			 </plugin>
             <plugin>
