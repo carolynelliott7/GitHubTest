@@ -31,6 +31,7 @@ pipeline {
           archiveArtifacts(artifacts: 'target/*.jar', fingerprint: true)
         }
       }
+     }
 
 		 stage('Publish') {
 			  steps {
