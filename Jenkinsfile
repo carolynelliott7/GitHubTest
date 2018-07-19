@@ -107,7 +107,7 @@ pipeline {
                 expression { env.BRANCH_NAME == 'master' }
             }
             steps {
-                echo "does blue ocean trigger build?"
+                echo "trigger build?"
             }
         }
     
