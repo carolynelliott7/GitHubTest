@@ -128,7 +128,7 @@ pipeline {
                 expression { env.BRANCH_NAME == 'master' }
             }
             steps {
-                echo "is the build trigger working?"
+                echo "testing bitbucket hook"
             }
         }
     
