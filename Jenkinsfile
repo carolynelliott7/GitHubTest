@@ -15,6 +15,7 @@ pipeline {
 
     
     stages {
+        
         stage ('Initialize') {
             steps {
                 sh '''
@@ -26,6 +27,7 @@ pipeline {
             
             }
        	}
+       	
        	// stage('build & SonarQube Scan') {
     		 // steps {
     			 // withSonarQubeEnv('SonarQubeTest') {
@@ -39,6 +41,7 @@ pipeline {
 			 	//  }  
 			 // }	
   		// }
+  		
   		// stage("Quality Gate") {
             // steps {
                 // timeout(time: 1, unit: 'HOURS') {
@@ -50,7 +53,7 @@ pipeline {
             // }
         // }
         // Note: Jenkins still cannot communicate with the SonarQube server. The "Quality Gate" stage should abort the pipeline if the Quality Gate does not pass.
-        // Quality Gate stage will not work unless the webhook inside SonarQube is working properly.
+        
         stage ('Build') {
             steps {
                 sh 'mvn -Dmaven.test.failure.ignore=false install'
@@ -66,6 +69,7 @@ pipeline {
                 }
             }
         }
+		
 		//stage ('User OK') {
         	//steps {
 	        	//script {
@@ -86,8 +90,6 @@ pipeline {
 					// nexusArtifactUploader artifacts: [[artifactId: 'gs-spring-boot', classifier: '', file: 'target/gs-spring-boot-0.1.0.jar', type: 'jar']], credentialsId: 'admin', groupId: 'org.springframework', nexusUrl: '10.0.1.153:8081/nexus', nexusVersion: 'nexus2', protocol: 'http', repository: 'releases', version: '0.1.0'
 				  //}
 			 //}
-				
-				// I think the script below will work but editing out 7/18 to test other parts of pipeline
 				 script {
 					 nexusPublisher nexusInstanceId: 'localNexus', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/gs-spring-boot-0.1.0.jar']], mavenCoordinate: [artifactId: 'gs-spring-boot', groupId: 'org.springframework', packaging: 'jar', version: '0.1.0']]]
 				 }
@@ -101,6 +103,7 @@ pipeline {
     			}
     		}
     	}
+    	
         stage ('Deploy') {
             when {
                 expression { env.BRANCH_NAME == 'master' }
