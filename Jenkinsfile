@@ -60,35 +60,6 @@ pipeline {
                 echo "trigger build?"
             }
       	}
-      
-    stage('Publish') {
-      steps {
-        script {
-          nexusPublisher nexusInstanceId: 'localNexus', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/gs-spring-boot-0.1.0.jar']], mavenCoordinate: [artifactId: 'gs-spring-boot', groupId: 'org.springframework', packaging: 'jar', version: '0.1.0']]]
-        }
-
-      }
-    }
-    
-    stage('Retrieve Artifact from Nexus') {
-      steps {
-        script {
-          artifactResolver artifacts: [artifact(artifactId: 'gs-spring-boot', groupId: 'org.springframework', version: '0.1.0')], targetDirectory: 'src'
-        }
-
-      }
-    }
-    
-    stage('Deploy') {
-      when {
-        expression {
-          env.BRANCH_NAME == 'master'
-        }
-      }
-      steps {
-        echo 'does this edit go to bitbucket?'
-      }
-    }
   }
   
 }
