@@ -126,6 +126,19 @@
         <!-- end::tests[] -->
 
     </dependencies>
+    <!-- profiles section should communicate with settings file to get username and password info -->
+    <profiles>
+    <profile>
+        <id>NexusServer</id>
+        <activation>
+            <activeByDefault>true</activeByDefault>
+        </activation>
+        <properties>
+            <!-- <tomcat-server>localhost</tomcat-server> -->
+            <url>http://localhost:8081/</url>
+        </properties>
+    </profile>
+</profiles>
    
     <build>
        

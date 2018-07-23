@@ -16,17 +16,18 @@ pipeline {
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
                 '''
-  	   	script {
-  	   		configFileProvider([configFile('46f15e2d-ebc5-4407-b7ef-058b54981571')]) {
-    		// some block
-			}
-  	   	}
+  	   	//script {
+  	   		//configFileProvider([configFile('46f15e2d-ebc5-4407-b7ef-058b54981571')]) {
+    		//sh 'mvn -s $MAVEN_SETTINGS clean package'
+			//}
+  	   	//}
       }
     }
     stage('Build') {
     	steps {
         sh 'mvn -Dmaven.test.failure.ignore=false install'
-        sh 'mvn -Dmaven.test.failure.ignore clean package'
+        //commenting out next line bc repeating config file command? 7/23
+        // sh 'mvn -Dmaven.test.failure.ignore clean package'
       	}
       post {
         always {
