@@ -13,22 +13,22 @@
 	        <version>2.0.3.RELEASE</version>
 	    </parent>
 	    
-		<!-- I don't think this section is doing anything useful -->
+		<!-- I don't think this section is doing anything useful
 		<distributionManagement>
 		  <repository>
 		    <id>releases</id>
 		    <url>http://10.0.1.153:8081/nexus/content/repositories/releases</url>
 		  </repository>
-		</distributionManagement>
+		</distributionManagement> -->
 	
 	
 
     
-    <!-- new 7/18 -->
+    <!-- new 7/18
    	<ciManagement>
 	    <system>jenkins</system>
 	    <url>http://jenkins.gcnp.local:8080/</url>
-	</ciManagement>
+	</ciManagement> -->
 
     <properties>    
     

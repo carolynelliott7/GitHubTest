@@ -35,7 +35,7 @@ pipeline {
         }
         success {
           archiveArtifacts(artifacts: 'target/*.jar', fingerprint: true)
-          archiveArtifacts(artifacts: 'setting.xml', fingerprint: true)
+          archiveArtifacts(artifacts: '$MAVEN_HOME/conf/settings.xml', fingerprint: true)
         }
       }
      }
