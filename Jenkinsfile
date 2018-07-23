@@ -22,14 +22,13 @@ pipeline {
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
                 '''
-      	  //added 7/23 to try to add config file
-  		script{
-  			wrap([$class: 'ConfigFileBuildWrapper', managedFiles: [[fileId: '46f15e2d-ebc5-4407-b7ef-058b54981571', targetLocation: '', variable: 'MAVEN_SETTINGS']]]) {
-    		sh "${mvnHome}/bin/mvn -B -U -s $MAVEN_SETTINGS -Dmaven.javadoc.skip -Dmaven.repo.local=\"${params.JP_LocalRepositoryLocation}\" deploy"
-  		}
+  	   	script {
+  	   		configFileProvider([configFile('46f15e2d-ebc5-4407-b7ef-058b54981571')]) {
+    		// some block
+		}
   	   }
-      }
     }
+    
     stage('Build') {
     	steps {
         sh 'mvn -Dmaven.test.failure.ignore=false install'
