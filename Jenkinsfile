@@ -35,7 +35,7 @@ pipeline {
         }
         success {
           archiveArtifacts(artifacts: 'target/*.jar', fingerprint: true)
-          archiveArtifacts(artifacts: 'sonar-project.properties', fingerprint: true)
+          archiveArtifacts(artifacts: 'settings.properties', fingerprint: true)
         }
       }
      }
