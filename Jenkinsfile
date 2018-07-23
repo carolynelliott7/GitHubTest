@@ -35,7 +35,7 @@ pipeline {
         }
         success {
           archiveArtifacts(artifacts: 'target/*.jar', fingerprint: true)
-          archiveArtifacts artifacts: 'settings.xml', caseSensitive: false, fingerprint: true, onlyIfSuccessful: true
+          archiveArtifacts (artifacts: '*.xml', caseSensitive: false, fingerprint: true)
         }
       }
      }
