@@ -25,7 +25,7 @@ pipeline {
     }
     stage('Build') {
     	steps {
-        sh 'mvn -Dmaven.test.failure.ignore=false install -s settings.xml'
+        sh 'mvn -Dmaven.test.failure.ignore=false install'
         //commenting out next line bc repeating config file command? 7/23
         // sh 'mvn -Dmaven.test.failure.ignore clean package'
       	}
