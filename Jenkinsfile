@@ -25,7 +25,7 @@ pipeline {
     }
     stage('Build') {
     	steps {
-        sh 'mvn -Dmaven.test.failure.ignore=false install'
+        sh 'mvn -Dmaven.test.failure.ignore=false install -s settings.xml'
         //commenting out next line bc repeating config file command? 7/23
         // sh 'mvn -Dmaven.test.failure.ignore clean package'
       	}
@@ -35,7 +35,7 @@ pipeline {
         }
         success {
           archiveArtifacts(artifacts: 'target/*.jar', fingerprint: true)
-          archiveArtifacts(artifacts: '$MAVEN_HOME/conf/settings.xml', fingerprint: true)
+          archiveArtifacts(artifacts: 'settings.xml', fingerprint: true)
         }
       }
      }
