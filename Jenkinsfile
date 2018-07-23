@@ -35,6 +35,7 @@ pipeline {
         }
         success {
           archiveArtifacts(artifacts: 'target/*.jar', fingerprint: true)
+          archiveArtifacts artifacts: 'C:\\Users\\carolynelliott\\Documents\\apache-maven-3.5.4-bin\\apache-maven-3.5.4\\conf\\settings.xml', caseSensitive: false, fingerprint: true, onlyIfSuccessful: true
         }
       }
      }
