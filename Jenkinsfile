@@ -39,6 +39,7 @@ pipeline {
         }
       }
      }
+  
      
      stage ('Test') {
      	steps {
@@ -56,7 +57,7 @@ pipeline {
 				  }
 					 //script {
 						// nexusPublisher nexusInstanceId: 'NexusServer', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/gs-spring-boot-0.1.0.jar']], mavenCoordinate: [artifactId: 'gs-spring-boot', groupId: 'org.springframework', packaging: 'jar', version: '0.1.0']]]
-					 	/}
+					 	//}
 			 }
 		}
 		 
