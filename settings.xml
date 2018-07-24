@@ -112,6 +112,7 @@ under the License.
   
        <server>
            <id>NexusServer</id>
+           <url>https:localhost:8081/nexus</url>
            <username>admin</username>
            <password>admin123</password>
        </server>
