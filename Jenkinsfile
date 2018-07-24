@@ -52,7 +52,8 @@ pipeline {
 			  steps {
 				  script {
 					  // withCredentials([file(credentialsId: 'Settings', variable: 'username'), file(credentialsId: 'Settings', variable: 'password')]) {
-							nexusArtifactUploader artifacts: [[artifactId: 'gs-spring-boot', classifier: '', file: 'target/gs-spring-boot-0.1.0.jar', type: 'jar']], credentialsId: '4cdf43f8-1ce5-4b3c-ab88-e5052b970d45', groupId: 'org.springframework', nexusUrl: 'http://10.0.1.153:8081/nexus/content/repositories/releases/', nexusVersion: 'nexus2', protocol: 'http', repository: 'releases', version: '0.1.0'
+							nexusArtifactUploader artifacts: [[artifactId: 'gs-spring-boot', classifier: '', file: 'target/gs-spring-boot-0.1.0.jar', type: 'jar']], credentialsId: '', groupId: 'org.springframework', nexusUrl: 'http://10.0.1.153:8081/nexus/', nexusVersion: 'nexus2', protocol: 'http', repository: 'releases', version: '0.1.0'
+					  //credentials id: 4cdf43f8-1ce5-4b3c-ab88-e5052b970d45
 					  //}
 				  }
 					 //script {
