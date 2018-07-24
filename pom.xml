@@ -82,13 +82,13 @@
     </properties>
     
     
- 	<repositories>
+ 	<distributionManagement>
 	    <repository>
-	        <id>NexusTestServer</id>
+	        <id>NexusServer</id>
 	        <name>NexusTestServer</name>
 	        <url>http://10.0.1.153:8081/nexus/</url>
 	    </repository>
-	</repositories>
+	</distributionManagement>
   
       <dependencies>
     	<!-- new 7/18 
