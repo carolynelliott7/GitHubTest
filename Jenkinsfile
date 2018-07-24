@@ -72,8 +72,8 @@ pipeline {
 				// script {
 					// artifactResolver artifacts: [artifact(artifactId: 'gs-spring-boot', groupId: 'org.springframework', version: '0.1.0')], targetDirectory: 'src'
     			// }
-    		// }
-    	// }
+    		 }
+    	}
     	
         //stage ('Deploy') {
            // when {
