@@ -86,7 +86,7 @@
 	    <repository>
 	        <id>NexusServer</id>
 	        <name>NexusTestServer</name>
-	        <url>http://10.0.1.153:8081/nexus/</url>
+	        <url>http://10.0.1.153:8081/nexus</url>
 	    </repository>
 	</distributionManagement>
   
@@ -135,7 +135,7 @@
         </activation>
         <properties>
             <!-- <tomcat-server>localhost</tomcat-server> -->
-            <url>http://localhost:8081/</url>
+            <url>http://localhost:8081/nexus</url>
         </properties>
     </profile>
 </profiles>
