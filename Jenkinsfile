@@ -39,8 +39,14 @@ pipeline {
         }
       }
      }
+     
+     stage ('Test') {
+     	steps {
+     		sh 'echo "Test"'
+     	}
+     }
 
-		 stage('Publish') {
+		 stage('Deploy to Nexus') {
 			  steps {
 				  //script {
 					// nexusArtifactUploader artifacts: [[artifactId: 'gs-spring-boot', classifier: '', file: 'target/gs-spring-boot-0.1.0.jar', type: 'jar']], credentialsId: 'admin', groupId: 'org.springframework', nexusUrl: '10.0.1.153:8081/nexus', nexusVersion: 'nexus2', protocol: 'http', repository: 'releases', version: '0.1.0'
@@ -51,22 +57,22 @@ pipeline {
 			 }
 		 }
 		 
-		stage ('Retrieve Artifact from Nexus'){
-			steps {
-				script {
-					artifactResolver artifacts: [artifact(artifactId: 'gs-spring-boot', groupId: 'org.springframework', version: '0.1.0')], targetDirectory: 'src'
-    			}
-    		}
-    	}
+		//stage ('Retrieve Artifact from Nexus'){
+			// steps {
+				// script {
+					// artifactResolver artifacts: [artifact(artifactId: 'gs-spring-boot', groupId: 'org.springframework', version: '0.1.0')], targetDirectory: 'src'
+    			// }
+    		// }
+    	// }
     	
-        stage ('Deploy') {
-            when {
-                expression { env.BRANCH_NAME == 'master' }
-            }
-            steps {
-                echo "trigger build?7"
-            }
-      	}
+        //stage ('Deploy') {
+           // when {
+             //   expression { env.BRANCH_NAME == 'master' }
+            //}
+            //steps {
+              //  echo "trigger build?7"
+            //}
+      	//}
   }
   
 }
