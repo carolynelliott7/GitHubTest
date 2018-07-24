@@ -51,7 +51,7 @@ pipeline {
 			  steps {
 			  script {
 				  withCredentials([file(credentialsId: 'Settings', variable: 'username'), file(credentialsId: 'Settings', variable: 'password')]) {
-						echo '${password}'
+						sh 'echo '${password}''
 				  }
 			  }			   
 				  
