@@ -50,12 +50,15 @@ pipeline {
 		 stage('Deploy to Nexus') {
 			  
 			  steps {
-				  script {
+			  		sh 'mvn deploy'
+			  		
+			  		
+				  //script {
 					  // withCredentials([file(credentialsId: 'Settings', variable: 'username'), file(credentialsId: 'Settings', variable: 'password')]) {
-							nexusArtifactUploader artifacts: [[artifactId: 'gs-spring-boot', classifier: '', file: 'target/gs-spring-boot-0.1.0.jar', type: 'jar']], credentialsId: '62641c58-98c7-426b-9f26-bf9a09b653cc', groupId: 'org.springframework', nexusUrl: '10.0.1.153:8081/nexus', nexusVersion: 'nexus2', protocol: 'http', repository: 'releases', version: '0.1.0'
+							//nexusArtifactUploader artifacts: [[artifactId: 'gs-spring-boot', classifier: '', file: 'target/gs-spring-boot-0.1.0.jar', type: 'jar']], credentialsId: '62641c58-98c7-426b-9f26-bf9a09b653cc', groupId: 'org.springframework', nexusUrl: '10.0.1.153:8081/nexus', nexusVersion: 'nexus2', protocol: 'http', repository: 'releases', version: '0.1.0'
 					  //credentials id: 4cdf43f8-1ce5-4b3c-ab88-e5052b970d45
 					  //}
-				  }
+				  //}
 					 //script {
 						// nexusPublisher nexusInstanceId: 'NexusTestServer', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/gs-spring-boot-0.1.0.jar']], mavenCoordinate: [artifactId: 'gs-spring-boot', groupId: 'org.springframework', packaging: 'jar', version: '0.1.0']]]
 					 	//}
