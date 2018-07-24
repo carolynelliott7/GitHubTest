@@ -340,7 +340,7 @@
                                     <artifactId>gs-spring-boot</artifactId>
                                     <version>0.1.0</version>
                                     <type>jar</type>
-                                    <outputDirectory>target</outputDirectory>
+                                    <outputDirectory>C:\Users\carolynelliott\Documents\hello-world</outputDirectory>
                                 </artifactItem>
                             </artifactItems>
                         </configuration>
