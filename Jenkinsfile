@@ -68,7 +68,7 @@ pipeline {
 		 
 		stage ('Retrieve Artifact from Nexus'){
 			 steps {
-				sh 'mvn install'
+				sh 'mvn install:install-file'
 				//sh 'mvn org.apache.maven.plugins:maven-dependency-plugin:2.8:get  -DrepoUrl=http://10.0.1.153:8081/nexus/ -Dartifact=org.springframework:gs-spring-boot:0.1.0:jar -Dtransitive=false'
 				// script {
 					// artifactResolver artifacts: [artifact(artifactId: 'gs-spring-boot', groupId: 'org.springframework', version: '0.1.0')], targetDirectory: 'src'
