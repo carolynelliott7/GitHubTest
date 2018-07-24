@@ -181,7 +181,7 @@
 			      </execution>
 			    </executions>
 			    <configuration>
-			      <serverId>localNexus</serverId>
+			      <serverId>NexusServer</serverId>
 			      <nexusUrl>http://10.0.1.153:8081/nexus/</nexusUrl>
 			      <skipStaging>false</skipStaging>
 			      <!-- line above was originally true -->
@@ -338,7 +338,7 @@
                                 <artifactItem>
                                     <groupId>org.springframework</groupId>
                                     <artifactId>gs-spring-boot</artifactId>
-                                    <version>0.1.0</version>
+                                    <version>0.2.0</version>
                                     <type>jar</type>
                                     <outputDirectory>target</outputDirectory>
                                 </artifactItem>
