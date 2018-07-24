@@ -47,10 +47,10 @@ pipeline {
      	}
      }
 
-		 stage('Deploy to Nexus') {
+		 //stage('Deploy to Nexus') {
 			  
-			  steps {
-			  		sh 'mvn deploy'
+			//  steps {
+			  //		sh 'mvn deploy'
 			  		
 			  		
 				  //script {
@@ -62,12 +62,13 @@ pipeline {
 					 //script {
 						// nexusPublisher nexusInstanceId: 'NexusTestServer', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/gs-spring-boot-0.1.0.jar']], mavenCoordinate: [artifactId: 'gs-spring-boot', groupId: 'org.springframework', packaging: 'jar', version: '0.1.0']]]
 					 	//}
-			 }
-		}
+			 //}
+		//}
 		 
 		 
-		//stage ('Retrieve Artifact from Nexus'){
-			// steps {
+		stage ('Retrieve Artifact from Nexus'){
+			 steps {
+				mvn org.apache.maven.plugins:maven-dependency-plugin:2.8:get -Dartifact=org.springframework:gs-spring-boot:0.1.0[:jar[:'']]
 				// script {
 					// artifactResolver artifacts: [artifact(artifactId: 'gs-spring-boot', groupId: 'org.springframework', version: '0.1.0')], targetDirectory: 'src'
     			// }
