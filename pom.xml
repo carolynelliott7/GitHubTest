@@ -86,7 +86,7 @@
 	    <repository>
 	        <id>NexusTestServer</id>
 	        <name>NexusTestServer</name>
-	        <url>http://10.0.1.153:8081/nexus/content/repositories/releases/</url>
+	        <url>http://10.0.1.153:8081/nexus/</url>
 	    </repository>
 	</repositories>
   
