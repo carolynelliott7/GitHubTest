@@ -64,10 +64,12 @@ pipeline {
 		 stage('Deploy to Nexus') {
 			  
 			steps {
-				script {
-					withCredentials([file(credentialsId: '4cdf43f8-1ce5-4b3c-ab88-e5052b970d45', variable: 'USERNAME'), file(credentialsId: '4cdf43f8-1ce5-4b3c-ab88-e5052b970d45', variable: 'PASSWORD')]) {
-			  			sh 'mvn deploy -Dusername=$USERNAME -password=$PASSWORD'
-			  		}
+				//script {
+					//withCredentials([file(credentialsId: '4cdf43f8-1ce5-4b3c-ab88-e5052b970d45', variable: 'USERNAME'), file(credentialsId: '4cdf43f8-1ce5-4b3c-ab88-e5052b970d45', variable: 'PASSWORD')]) {
+			  			//sh 'mvn deploy -Dusername=$USERNAME -password=$PASSWORD'
+			  		//}
+			  		
+			  	sh 'mvn deploy:deploy-file -DgroupId=org.springframework -DartifactId=gs-spring-boot -Dversion=0.1.0 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=NexusServer -Durl=http://localhost:8081/nexus/repository/releases -Dfile=target/*.jar'
 			  	}
 			}
 		}	
