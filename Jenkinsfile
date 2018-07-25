@@ -24,13 +24,13 @@ pipeline {
       }
     }
     stage('Build') {
-    	steps {
+    	steps ('Build'){
         sh 'mvn -Dmaven.test.failure.ignore=false install'
         //commenting out next line bc repeating config file command? 7/23
         // sh 'mvn -Dmaven.test.failure.ignore clean package'
       	}
       post {
-        always {
+        always ('Unit Testing'){
           junit 'target/surefire-reports/**/*.xml'
         }
         success {
@@ -61,16 +61,16 @@ pipeline {
         }
      
 
-		 stage('Deploy to Nexus') {
+		 stage('Release') {
 			  
-			steps {
+			steps ('Deploy to Nexus'){
 				//script {
 					//withCredentials([file(credentialsId: '4cdf43f8-1ce5-4b3c-ab88-e5052b970d45', variable: 'USERNAME'), file(credentialsId: '4cdf43f8-1ce5-4b3c-ab88-e5052b970d45', variable: 'PASSWORD')]) {
 			  			//sh 'mvn deploy -Dusername=$USERNAME -password=$PASSWORD'
 			  		//}
 			  		
 			  	//sh 'mvn deploy:deploy-file -DgroupId=org.springframework -DartifactId=gs-spring-boot -Dversion=0.1.0 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=NexusServer -Durl=http://10.0.1.153:8081/nexus/content/repositories/releases/ -Dfile=pom.xml'
-			  	sh 'mvn deploy -DrepositoryId=NexusServer -Durl=http://10.0.1.153:8081/nexus/content/repositories/releases/org/springframework/gs-spring-boot/'
+			  	//sh 'mvn deploy -DrepositoryId=NexusServer -Durl=http://10.0.1.153:8081/nexus/content/repositories/releases/org/springframework/gs-spring-boot/'
 			  	
 			}
 		}	
