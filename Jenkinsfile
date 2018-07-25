@@ -53,9 +53,9 @@ pipeline {
 	            	if (env.BRANCH_NAME == 'CE-fix-again') {
 	            		input message: 'Would you like to continue to deployment?', ok: 'Yes', submitter: 'mtross,carolynelliott'
 	                }
-	                //else {
-	                	//input message: 'Would you like to analyze with SonarQube?', ok: 'Yes', submitter: 'mtross,carolynelliott'
-	                //}
+	                else {
+	                	input message: 'Would you like to analyze with SonarQube?', ok: 'Yes', submitter: 'mtross,carolynelliott'
+	                }
 	        	}
         	}
         }
