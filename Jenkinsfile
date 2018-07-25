@@ -29,7 +29,7 @@ pipeline {
         //commenting out next line bc repeating config file command? 7/23
         // sh 'mvn -Dmaven.test.failure.ignore clean package'
       	}
-      post {
+      post ('Unit Tests'){
         always ('Unit Testing'){
           junit 'target/surefire-reports/**/*.xml'
         }
@@ -43,7 +43,7 @@ pipeline {
      
      stage ('Test') {
      	steps {
-     		junit 'build/reports/**/*.xml'
+     		sh 'echo "Record Unit Tests"'
      	}
      }
      
