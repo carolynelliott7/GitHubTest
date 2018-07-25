@@ -46,15 +46,34 @@ pipeline {
      		sh 'echo "Test"'
      	}
      }
+     
+     stage ('User OK') {
+        	steps {
+	        	script {
+	            	if (env.BRANCH_NAME == 'CE-fix-again') {
+	            		input message: 'Would you like to continue to deployment?', ok: 'Yes', submitter: 'mtross,carolynelliott'
+	                }
+	                //else {
+	                	//input message: 'Would you like to analyze with SonarQube?', ok: 'Yes', submitter: 'mtross,carolynelliott'
+	                //}
+	        	}
+        	}
+        }
+     
 
-		 //stage('Deploy to Nexus') {
+		 stage('Deploy to Nexus') {
 			  
-			//  steps {
-			  //		sh 'mvn deploy'
-			  		
+			steps {
+				script {
+					withCredentials([file(credentialsId: 'Settings', variable: 'USERNAME'), file(credentialsId: 'Settings', variable: 'PASSWORD')]) {
+			  			sh 'mvn deploy -Dusername=$USERNAME -password=$PASSWORD'
+			  		}
+			  	}
+			}
+		}	
 			  		
 				  //script {
-					  // withCredentials([file(credentialsId: 'Settings', variable: 'username'), file(credentialsId: 'Settings', variable: 'password')]) {
+					  // withCredentials([file(credentialsId: '4cdf43f8-1ce5-4b3c-ab88-e5052b970d45', variable: 'username'), file(credentialsId: '4cdf43f8-1ce5-4b3c-ab88-e5052b970d45', variable: 'password')]) {
 							//nexusArtifactUploader artifacts: [[artifactId: 'gs-spring-boot', classifier: '', file: 'target/gs-spring-boot-0.1.0.jar', type: 'jar']], credentialsId: '62641c58-98c7-426b-9f26-bf9a09b653cc', groupId: 'org.springframework', nexusUrl: '10.0.1.153:8081/nexus', nexusVersion: 'nexus2', protocol: 'http', repository: 'releases', version: '0.1.0'
 					  //credentials id: 4cdf43f8-1ce5-4b3c-ab88-e5052b970d45
 					  //}
@@ -66,15 +85,15 @@ pipeline {
 		//}
 		 
 		 
-		stage ('Retrieve Artifact from Nexus'){
-			 steps {
-				sh 'mvn install:install-file'
+		//stage ('Retrieve Artifact from Nexus'){
+			// steps {
+				// sh 'mvn install:install-file'
 				//sh 'mvn org.apache.maven.plugins:maven-dependency-plugin:2.8:get  -DrepoUrl=http://10.0.1.153:8081/nexus/ -Dartifact=org.springframework:gs-spring-boot:0.1.0:jar -Dtransitive=false'
 				// script {
 					// artifactResolver artifacts: [artifact(artifactId: 'gs-spring-boot', groupId: 'org.springframework', version: '0.1.0')], targetDirectory: 'src'
     			// }
-    		 }
-    	}
+    		 //}
+    	//}
     	
         //stage ('Deploy') {
            // when {
