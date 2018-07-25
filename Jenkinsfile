@@ -65,7 +65,7 @@ pipeline {
 			  
 			steps {
 				script {
-					withCredentials([file(credentialsId: 'Settings', variable: 'USERNAME'), file(credentialsId: 'Settings', variable: 'PASSWORD')]) {
+					withCredentials([file(credentialsId: '4cdf43f8-1ce5-4b3c-ab88-e5052b970d45', variable: 'USERNAME'), file(credentialsId: '4cdf43f8-1ce5-4b3c-ab88-e5052b970d45', variable: 'PASSWORD')]) {
 			  			sh 'mvn deploy -Dusername=$USERNAME -password=$PASSWORD'
 			  		}
 			  	}
