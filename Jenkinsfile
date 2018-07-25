@@ -34,7 +34,7 @@ pipeline {
           junit 'target/surefire-reports/**/*.xml'
         }
         success {
-          archiveArtifacts(artifacts: 'target/*.jar', fingerprint: true)
+          archiveArtifacts(artifacts: '*.jar', fingerprint: true)
           archiveArtifacts(artifacts: 'settings.xml', fingerprint: true)
         }
       }
