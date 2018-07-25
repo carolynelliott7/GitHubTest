@@ -43,7 +43,7 @@ pipeline {
      
      stage ('Test') {
      	steps {
-     		sh 'echo "Test"'
+     		junit 'build/reports/**/*.xml'
      	}
      }
      
