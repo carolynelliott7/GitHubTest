@@ -70,7 +70,7 @@ pipeline {
 			  		//}
 			  		
 			  	//sh 'mvn deploy:deploy-file -DgroupId=org.springframework -DartifactId=gs-spring-boot -Dversion=0.1.0 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=NexusServer -Durl=http://10.0.1.153:8081/nexus/content/repositories/releases/ -Dfile=pom.xml'
-			  	sh 'mvn deploy -DrepositoryId=NexusServer -Durl=http://10.0.1.153:8081/nexus/content/repositories/releases/'
+			  	sh 'mvn deploy -DrepositoryId=NexusServer -Durl=http://10.0.1.153:8081/nexus/content/repositories/releases/org/springframework/gs-spring-boot/'
 			  	
 			}
 		}	
