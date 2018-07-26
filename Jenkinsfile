@@ -5,9 +5,9 @@ pipeline {
     maven 'MavenTest'
     jdk 'JDKTest'
   }
-  //triggers {
-    //githubPush()
-  //}
+  triggers {
+    githubPush()
+  }
   
   stages {
     stage('Initialize') {
