@@ -10,20 +10,20 @@ pipeline {
   //}
   
   stages {
-    stage('Initialize') {
-      steps {
+    //stage('Initialize') {
+      //steps {
       
-        sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                '''
+      //  sh '''
+        //            echo "PATH = ${PATH}"
+          //          echo "M2_HOME = ${M2_HOME}"
+            //    '''
   	   	//script {
   	   		//configFileProvider([configFile('46f15e2d-ebc5-4407-b7ef-058b54981571')]) {
     		//sh 'mvn -s $MAVEN_SETTINGS clean package'
 			//}
   	   	//}
-      }
-    }
+      //}
+    //}
     stage('Build') {
     	steps ('Build'){
         sh 'mvn -Dmaven.test.failure.ignore=false install'
