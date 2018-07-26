@@ -2,7 +2,7 @@ pipeline {
   agent any
   
   tools {
-    maven 'MavenTest'
+    maven 'Maven 3.5.4'
     jdk 'JDKTest'
   }
   //triggers {
