@@ -103,7 +103,7 @@ pipeline {
              //   expression { env.BRANCH_NAME == 'master' }
             //}
             //steps {
-              //  echo "trigger build?"
+              //  echo "send to GitHub?"
             //}
       	//}
   }
