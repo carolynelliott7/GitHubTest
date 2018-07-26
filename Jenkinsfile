@@ -2,12 +2,12 @@ pipeline {
   agent any
   
   tools {
-    //maven 'Maven 3.0.4'
+    maven 'Maven 3.5.4'
     jdk 'JDKTest'
   }
-  triggers {
-    githubPush()
-  }
+  //triggers {
+    //githubPush()
+  //}
   
   stages {
     stage('Initialize') {
