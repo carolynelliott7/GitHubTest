@@ -6,7 +6,7 @@ pipeline {
     jdk 'JDK 8u172'
   }
   triggers {
-    bitbucketPush()
+    githubPush()
   }
   
   stages {
