@@ -2,7 +2,7 @@ pipeline {
   agent any
   
   tools {
-    maven 'Maven 3.1.1'
+    //maven 'Maven 3.0.4'
     jdk 'JDK 8u172'
   }
   triggers {
