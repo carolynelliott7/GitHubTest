@@ -3,7 +3,7 @@ pipeline {
   
   tools {
     //maven 'Maven 3.0.4'
-    jdk 'JDK 8u172'
+    jdk 'JDKTest'
   }
   triggers {
     githubPush()
